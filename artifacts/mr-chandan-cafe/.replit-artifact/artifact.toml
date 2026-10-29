@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "MR-CHANDAN Café"
+description = "A bilingual website for MR-CHANDAN Café in Patna, featuring its location, 24-hour availability, guest reviews, and ways to call or get directions."
+version = "1.0.0"
+id = "artifacts/mr-chandan-cafe"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22055
+
+[services.development]
+run = "pnpm --filter @workspace/mr-chandan-cafe run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/mr-chandan-cafe", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/mr-chandan-cafe/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22055"
+BASE_PATH = "/"
