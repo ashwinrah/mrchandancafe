@@ -1,3 +1,5 @@
 {
-  "rootDirectory": "artifacts/mr-chandan-cafe"
+  "buildCommand": "pnpm --filter mr-chandan-cafe build",
+  "outputDirectory": "artifacts/mr-chandan-cafe/dist",
+  "framework": "vite"
 }
